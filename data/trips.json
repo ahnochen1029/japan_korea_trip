@@ -1,0 +1,15 @@
+[
+  {
+    "id": "fukuoka-busan-2025",
+    "title": "福岡・阿蘇・釜山",
+    "subtitle": "日本 × 韓國跨國之旅",
+    "dateRange": "2026/05/26 – 06/02",
+    "duration": 8,
+    "countries": ["日本", "韓國"],
+    "cities": ["福岡", "阿蘇", "高千穗", "熊本", "釜山"],
+    "cover": "🌋",
+    "tags": ["火山", "峽谷", "夜景", "渡輪", "膠囊列車"],
+    "status": "upcoming",
+    "path": "trips/fukuoka-busan-2025/index.html"
+  }
+]

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>出發前待辦事項</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    body { background: #0f0f1a; }
+
+    /* ── Header ── */
+    .page-top {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .progress-bar {
+      width: 120px;
+      height: 6px;
+      background: rgba(255,255,255,.1);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6c63ff, #c9b8ff);
+      border-radius: 999px;
+      transition: width .4s ease;
+    }
+
+    .progress-text {
+      font-size: .78rem;
+      color: rgba(255,255,255,.4);
+      white-space: nowrap;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, #c9b8ff 55%, #ff8c69 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: .3rem;
+    }
+
+    .hero p {
+      font-size: .82rem;
+      color: rgba(255,255,255,.35);
+      letter-spacing: .06em;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 6rem;
+    }
+
+    /* ── Group ── */
+    .group {
+      margin-bottom: 2rem;
+    }
+
+    .group-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.3);
+      margin-bottom: .7rem;
+      padding-left: .2rem;
+    }
+
+    /* ── Todo item ── */
+    .todo-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      margin-bottom: .6rem;
+      cursor: pointer;
+      transition: background .2s, border-color .2s, transform .15s;
+      user-select: none;
+    }
+
+    .todo-item:hover {
+      background: rgba(255,255,255,.07);
+      transform: translateX(3px);
+    }
+
+    .todo-item.done {
+      background: rgba(80,200,120,.05);
+      border-color: rgba(80,200,120,.15);
+    }
+
+    .todo-item.done:hover {
+      background: rgba(80,200,120,.08);
+    }
+
+    /* Checkbox */
+    .todo-check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 7px;
+      border: 2px solid rgba(255,255,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      transition: background .2s, border-color .2s;
+      font-size: .85rem;
+    }
+
+    .todo-item.done .todo-check {
+      background: linear-gradient(135deg, #00b894, #55efc4);
+      border-color: transparent;
+    }
+
+    /* Content */
+    .todo-content { flex: 1; min-width: 0; }
+
+    .todo-title {
+      font-size: .92rem;
+      font-weight: 600;
+      color: #f0f0ff;
+      line-height: 1.4;
+      transition: color .2s;
+    }
+
+    .todo-item.done .todo-title {
+      color: rgba(255,255,255,.4);
+      text-decoration: line-through;
+      text-decoration-color: rgba(255,255,255,.2);
+    }
+
+    .todo-note {
+      font-size: .75rem;
+      color: rgba(255,255,255,.38);
+      margin-top: .25rem;
+      line-height: 1.5;
+    }
+
+    .todo-item.done .todo-note { color: rgba(255,255,255,.22); }
+
+    .todo-tag {
+      display: inline-block;
+      margin-top: .4rem;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: .65rem;
+      font-weight: 600;
+    }
+
+    .tag-jp   { background: rgba(255,80,80,.12);  color: #ff9898; border: 1px solid rgba(255,80,80,.22); }
+    .tag-kr   { background: rgba(80,180,255,.12); color: #80d4ff; border: 1px solid rgba(80,180,255,.22); }
+    .tag-book { background: rgba(201,184,255,.12); color: #c9b8ff; border: 1px solid rgba(201,184,255,.22); }
+    .tag-buy  { background: rgba(255,180,50,.12); color: #ffcc66; border: 1px solid rgba(255,180,50,.22); }
+
+    /* Priority dot */
+    .todo-priority {
+      flex-shrink: 0;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+    .p-high   { background: #ff6b6b; box-shadow: 0 0 6px rgba(255,107,107,.5); }
+    .p-medium { background: #ffcc66; box-shadow: 0 0 6px rgba(255,204,102,.4); }
+    .p-low    { background: rgba(255,255,255,.2); }
+
+    /* ── All done banner ── */
+    .all-done {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(0,184,148,.07);
+      border: 1px solid rgba(0,184,148,.2);
+      border-radius: 18px;
+      margin-top: 1rem;
+    }
+
+    .all-done .icon { font-size: 2.5rem; margin-bottom: .5rem; }
+    .all-done h3 { font-size: 1rem; font-weight: 700; color: #55efc4; }
+    .all-done p  { font-size: .8rem; color: rgba(255,255,255,.4); margin-top: .3rem; }
+  </style>
+</head>
+<body>
+
+<!-- ── Top bar ── -->
+<div class="page-top">
+  <a href="index.html" class="back-link">← 所有行程</a>
+  <div class="progress-wrap">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <span class="progress-text" id="progress-text">0 / 0 完成</span>
+  </div>
+</div>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <h1>✅ 出發前待辦事項</h1>
+  <p>福岡・阿蘇・釜山　2026/05/26 – 06/02</p>
+</div>
+
+<!-- ── List ── -->
+<div class="container">
+
+  <!-- 網路 -->
+  <div class="group">
+    <div class="group-label">📶 網路 SIM 卡</div>
+
+    <div class="todo-item" data-id="esim-jp" onclick="toggle(this)">
+      <div class="todo-priority p-high"></div>
+      <div class="todo-check">✓</div>
+      <div class="todo-content">
+        <div class="todo-title">購買日本 eSIM</div>
+        <div class="todo-note">建議選擇 IIJmio / Klook / Airalo 等平台，出發前在台灣設定好，抵達福岡機場即可使用。</div>
+        <span class="todo-tag tag-jp">🇯🇵 日本</span>
+      </div>
+    </div>
+
+    <div class="todo-item" data-id="esim-kr" onclick="toggle(this)">
+      <div class="todo-priority p-high"></div>
+      <div class="todo-check">✓</div>
+      <div class="todo-content">
+        <div class="todo-title">購買韓國 eSIM</div>
+        <div class="todo-note">建議選擇 KT / SK Telecom / Airalo 等平台，搭渡輪前確認已設定好，抵達釜山港可直接啟用。</div>
+        <span class="todo-tag tag-kr">🇰🇷 韓國</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 預訂 -->
+  <div class="group">
+    <div class="group-label">📋 行程預訂</div>
+
+    <div class="todo-item" data-id="mentaiko" onclick="toggle(this)">
+      <div class="todo-priority p-high"></div>
+      <div class="todo-check">✓</div>
+      <div class="todo-content">
+        <div class="todo-title">預定明太子麵包　The Full Full Hakata</div>
+        <div class="todo-note">5/27（三）10:00 開門取餐。確認是否需要提前電話或網路預約，人氣商品容易售完。</div>
+        <span class="todo-tag tag-book">📍 5/27</span>
+        <span class="todo-tag tag-jp">🇯🇵 福岡</span>
+      </div>
+    </div>
+
+    <div class="todo-item" data-id="takachiho" onclick="toggle(this)">
+      <div class="todo-priority p-high"></div>
+      <div class="todo-check">✓</div>
+      <div class="todo-content">
+        <div class="todo-title">預定高千穗峽手划船</div>
+        <div class="todo-note">5/28（三）使用，旺季排隊可達1.5小時。建議至高千穗峽官方網站提前預約，約 ¥2,000/艘（30分鐘）。</div>
+        <span class="todo-tag tag-book">📍 5/28</span>
+        <span class="todo-tag tag-jp">🇯🇵 宮崎</span>
+      </div>
+    </div>
+
+    <div class="todo-item" data-id="skycapsule" onclick="toggle(this)">
+      <div class="todo-priority p-high"></div>
+      <div class="todo-check">✓</div>
+      <div class="todo-content">
+        <div class="todo-title">預定釜山膠囊列車　Sky Capsule</div>
+        <div class="todo-note">6/1（一）使用，超熱門須提前 2–3 週於「해운대블루라인파크」官網預訂。票價約 ₩35,000 / 2人（含海岸鐵道）。</div>
+        <span class="todo-tag tag-book">📍 6/1</span>
+        <span class="todo-tag tag-kr">🇰🇷 釜山</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 購買 -->
+  <div class="group">
+    <div class="group-label">🛒 票卡購買</div>
+
+    <div class="todo-item" data-id="busanpass" onclick="toggle(this)">
+      <div class="todo-priority p-medium"></div>
+      <div class="todo-check">✓</div>
+      <div class="todo-content">
+        <div class="todo-title">購買釜山 City Pass</div>
+        <div class="todo-note">涵蓋釜山塔、釜山博物館、海東龍宮寺、太宗台 Danubi Train 等多項景點免費或折扣入場。<br>可至 Klook / KKday 購買，或抵達釜山後在旅客中心購買。</div>
+        <span class="todo-tag tag-buy">🎟 票券</span>
+        <span class="todo-tag tag-kr">🇰🇷 釜山</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- All done -->
+  <div class="all-done" id="all-done">
+    <div class="icon">🎉</div>
+    <h3>所有事項已完成！</h3>
+    <p>準備好出發了，旅途愉快！</p>
+  </div>
+
+</div>
+
+<script>
+  const STORAGE_KEY = 'trip-todos-2025';
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch { return {}; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function toggle(el) {
+    el.classList.toggle('done');
+    const state = loadState();
+    state[el.dataset.id] = el.classList.contains('done');
+    saveState(state);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const items = document.querySelectorAll('.todo-item');
+    const done  = document.querySelectorAll('.todo-item.done').length;
+    const total = items.length;
+    const pct   = total ? (done / total * 100) : 0;
+
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = `${done} / ${total} 完成`;
+    document.getElementById('all-done').style.display = (done === total && total > 0) ? 'block' : 'none';
+  }
+
+  // Restore state on load
+  (() => {
+    const state = loadState();
+    document.querySelectorAll('.todo-item').forEach(el => {
+      if (state[el.dataset.id]) el.classList.add('done');
+    });
+    updateProgress();
+  })();
+</script>
+</body>
+</html>

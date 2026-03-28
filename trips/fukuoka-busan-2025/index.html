@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>福岡・阿蘇・釜山 旅遊行程 2026</title>
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <style>
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(255,100,50,.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(80,120,255,.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 85%, rgba(255,50,150,.12) 0%, transparent 50%);
+      animation: aurora 8s ease-in-out infinite alternate;
+    }
+    @keyframes aurora {
+      0%   { opacity:.7; transform:scale(1); }
+      100% { opacity:1;  transform:scale(1.05); }
+    }
+    .hero-stars {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, #fff, transparent),
+        radial-gradient(1px 1px at 30% 40%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 50% 10%, #fff, transparent),
+        radial-gradient(1px 1px at 70% 60%, #fff, transparent),
+        radial-gradient(1px 1px at 85% 25%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 20% 75%, #fff, transparent),
+        radial-gradient(1px 1px at 90% 80%, #fff, transparent),
+        radial-gradient(1px 1px at 45% 55%, #fff, transparent),
+        radial-gradient(1px 1px at 65% 35%, #fff, transparent),
+        radial-gradient(2px 2px at 5%  90%, #fff, transparent);
+      opacity:.5;
+    }
+    .hero-content { position:relative; z-index:1; }
+    .hero-badge {
+      display:inline-block; padding:5px 18px;
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2);
+      border-radius:999px; font-size:.75rem; letter-spacing:.12em; color:#c9b8ff;
+      margin-bottom:1.2rem; backdrop-filter:blur(6px);
+    }
+    .hero h1 {
+      font-size:clamp(2rem,6vw,3.8rem); font-weight:800; line-height:1.2;
+      background:linear-gradient(135deg,#fff 0%,#c9b8ff 50%,#ff8c69 100%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      background-clip:text; margin-bottom:.8rem;
+    }
+    .hero-sub { font-size:.9rem; color:rgba(255,255,255,.5); letter-spacing:.08em; margin-bottom:2rem; }
+    .hero-pills { display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem; }
+    .pill { padding:6px 16px; border-radius:999px; font-size:.8rem; font-weight:600; backdrop-filter:blur(8px); }
+    .pill-jp  { background:rgba(255,80,80,.2);  border:1px solid rgba(255,80,80,.35);  color:#ff9898; }
+    .pill-kr  { background:rgba(80,180,255,.2); border:1px solid rgba(80,180,255,.35); color:#80d4ff; }
+    .pill-vol { background:rgba(255,140,50,.2); border:1px solid rgba(255,140,50,.35); color:#ffb878; }
+    .hero-summary { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; }
+    .hs-item { text-align:center; }
+    .hs-num { font-size:1.5rem; font-weight:800; color:#f0f0ff; }
+    .hs-lbl { font-size:.7rem; color:rgba(255,255,255,.38); letter-spacing:.06em; }
+    .scroll-hint {
+      position:absolute; bottom:1.8rem; left:50%; transform:translateX(-50%);
+      color:rgba(255,255,255,.3); font-size:.72rem; letter-spacing:.1em;
+      animation:bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform:translateX(-50%) translateY(0); }
+      50%      { transform:translateX(-50%) translateY(8px); }
+    }
+    .back-bar { max-width:940px; margin:0 auto; padding:1.5rem 1.5rem 0; }
+    .container { max-width:940px; margin:0 auto; padding:2.5rem 1.5rem 6rem; }
+    .section-title {
+      text-align:center; font-size:1rem; font-weight:700;
+      color:rgba(255,255,255,.35); letter-spacing:.14em; margin:3rem 0 1.5rem;
+    }
+    .section-title span {
+      display:inline-block; padding:4px 16px;
+      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+      border-radius:999px;
+    }
+    /* Day cards */
+    .day-card {
+      position:relative; border-radius:22px; padding:0;
+      margin-bottom:1.8rem; overflow:hidden;
+      transition:transform .3s, box-shadow .3s;
+      background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);
+    }
+    .day-card:hover { transform:translateY(-3px); box-shadow:0 18px 50px rgba(0,0,0,.4); }
+    .day-card::before {
+      content:''; position:absolute; top:0; left:0;
+      width:100%; height:3px; border-radius:0;
+    }
+    .d1::before { background:linear-gradient(90deg,#6c63ff,#c9b8ff); }
+    .d2::before { background:linear-gradient(90deg,#ff6b35,#ffcf40); }
+    .d3::before { background:linear-gradient(90deg,#ff8c00,#ffcf40); }
+    .d4::before { background:linear-gradient(90deg,#00b4d8,#90e0ef); }
+    .d5::before { background:linear-gradient(90deg,#0080ff,#40e0ff); }
+    .d6::before { background:linear-gradient(90deg,#0099ff,#80cfff); }
+    .d7::before { background:linear-gradient(90deg,#4a90e2,#7ec8e3); }
+    .d8::before { background:linear-gradient(90deg,#00b894,#00cec9); }
+    .day-head {
+      display:flex; align-items:center; gap:1rem;
+      padding:1.4rem 1.8rem 1rem; border-bottom:1px solid rgba(255,255,255,.05);
+    }
+    .day-num {
+      flex-shrink:0; width:54px; height:54px; border-radius:14px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      font-weight:800; line-height:1.1; color:#fff;
+    }
+    .d1 .day-num { background:linear-gradient(135deg,#6c63ff,#c9b8ff); }
+    .d2 .day-num { background:linear-gradient(135deg,#ff6b35,#ffa55a); }
+    .d3 .day-num { background:linear-gradient(135deg,#ff8c00,#ffcf40); }
+    .d4 .day-num { background:linear-gradient(135deg,#0077b6,#00b4d8); }
+    .d5 .day-num { background:linear-gradient(135deg,#0055cc,#4090ff); }
+    .d6 .day-num { background:linear-gradient(135deg,#0044aa,#0088ff); }
+    .d7 .day-num { background:linear-gradient(135deg,#2255aa,#5599dd); }
+    .d8 .day-num { background:linear-gradient(135deg,#00b894,#55efc4); }
+    .day-num .n  { font-size:1.1rem; }
+    .day-num .dt { font-size:.52rem; opacity:.8; letter-spacing:.03em; }
+    .day-info h2  { font-size:1.1rem; font-weight:700; color:#f0f0ff; }
+    .day-info .dl { font-size:.78rem; color:rgba(255,255,255,.38); margin-top:.1rem; letter-spacing:.04em; }
+    .country-flag { margin-left:auto; font-size:1.6rem; opacity:.7; }
+    .schedule { padding:.5rem 1.8rem 1.2rem; }
+    .si {
+      display:grid; grid-template-columns:62px 1fr; gap:.3rem .8rem;
+      padding:.65rem 0; border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .si:last-child { border-bottom:none; }
+    .si-time { font-size:.72rem; font-weight:700; color:rgba(255,255,255,.28); padding-top:3px; letter-spacing:.04em; }
+    .si-name { font-size:.92rem; font-weight:600; color:#f0f0ff; line-height:1.4; }
+    .si-desc { font-size:.78rem; color:rgba(255,255,255,.44); line-height:1.55; margin-top:.15rem; }
+    .si-tags { margin-top:.3rem; display:flex; flex-wrap:wrap; gap:.3rem; }
+    .tag { padding:2px 9px; border-radius:999px; font-size:.66rem; font-weight:600; }
+    .t-food   { background:rgba(255,180,50,.13);  color:#ffcc66; border:1px solid rgba(255,180,50,.25); }
+    .t-nature { background:rgba(80,200,120,.13);  color:#80e8a0; border:1px solid rgba(80,200,120,.25); }
+    .t-view   { background:rgba(80,180,255,.13);  color:#80ccff; border:1px solid rgba(80,180,255,.25); }
+    .t-trans  { background:rgba(180,100,255,.13); color:#cc88ff; border:1px solid rgba(180,100,255,.25); }
+    .t-hotel  { background:rgba(255,100,100,.13); color:#ff9090; border:1px solid rgba(255,100,100,.25); }
+    .t-night  { background:rgba(60,60,200,.2);    color:#9090ff; border:1px solid rgba(80,80,255,.35); }
+    .t-show   { background:rgba(255,50,150,.13);  color:#ff80cc; border:1px solid rgba(255,50,150,.25); }
+    .t-cable  { background:rgba(50,200,200,.13);  color:#60e8e8; border:1px solid rgba(50,200,200,.25); }
+    .t-shop   { background:rgba(255,200,50,.13);  color:#ffe066; border:1px solid rgba(255,200,50,.25); }
+    .t-spa    { background:rgba(255,100,200,.13); color:#ff88dd; border:1px solid rgba(255,100,200,.25); }
+    .t-tbd    { background:rgba(160,160,160,.1);  color:rgba(255,255,255,.4); border:1px solid rgba(160,160,160,.2); font-style:italic; }
+    .tips {
+      margin:.2rem 1.8rem 1.4rem;
+      background:rgba(201,184,255,.05); border-left:3px solid #c9b8ff;
+      border-radius:0 10px 10px 0; padding:.9rem 1.1rem;
+    }
+    .tips h4 { font-size:.72rem; color:#c9b8ff; letter-spacing:.1em; margin-bottom:.45rem; }
+    .tips ul  { padding-left:1rem; }
+    .tips li  { font-size:.75rem; color:rgba(255,255,255,.45); line-height:1.7; }
+    /* Ferry banner */
+    .ferry-banner {
+      display:flex; align-items:center; gap:1.2rem; flex-wrap:wrap;
+      background:linear-gradient(135deg,rgba(0,119,182,.14),rgba(0,180,216,.07));
+      border:1px solid rgba(0,180,216,.2); border-radius:18px;
+      padding:1.4rem 1.8rem; margin-bottom:1.8rem;
+    }
+    .ferry-icon { font-size:2.4rem; flex-shrink:0; }
+    .ferry-info h3 { font-size:.95rem; font-weight:700; color:#80d4ff; margin-bottom:.35rem; }
+    .ferry-info p  { font-size:.78rem; color:rgba(255,255,255,.45); line-height:1.7; }
+    .ferry-info strong { color:rgba(255,255,255,.7); }
+
+    /* ── Busan Map ── */
+    .map-section {
+      background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);
+      border-radius:22px; padding:1.6rem; margin-bottom:1.8rem; overflow:hidden;
+    }
+    .map-title {
+      font-size:.95rem; font-weight:700; color:#f0f0ff;
+      margin-bottom:1.2rem; display:flex; align-items:center; gap:.5rem;
+    }
+    .map-wrap {
+      position:relative; width:100%; border-radius:14px; overflow:hidden;
+      background:#0d1b2e;
+    }
+    .map-wrap svg { display:block; width:100%; height:auto; }
+    .map-legend {
+      display:flex; flex-wrap:wrap; gap:.5rem .9rem; margin-top:1rem;
+    }
+    .legend-item {
+      display:flex; align-items:center; gap:.4rem;
+      font-size:.7rem; color:rgba(255,255,255,.5);
+    }
+    .legend-dot {
+      width:10px; height:10px; border-radius:50%; flex-shrink:0;
+    }
+
+    /* ── Coffee section ── */
+    .cafe-section {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,180,80,.12);
+      border-radius: 22px;
+      padding: 1.6rem;
+      margin-bottom: 1.8rem;
+    }
+    .cafe-section-title {
+      font-size: .95rem;
+      font-weight: 700;
+      color: #f0f0ff;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .cafe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: .9rem;
+    }
+    .cafe-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,180,80,.1);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      transition: background .2s, border-color .2s;
+    }
+    .cafe-card:hover {
+      background: rgba(255,180,80,.06);
+      border-color: rgba(255,180,80,.22);
+    }
+    .cafe-name {
+      font-size: .88rem;
+      font-weight: 700;
+      color: #ffe8b0;
+      margin-bottom: .35rem;
+    }
+    .cafe-name-kr {
+      font-size: .72rem;
+      color: rgba(255,232,176,.45);
+      margin-left: .3rem;
+      font-weight: 400;
+    }
+    .cafe-highlight {
+      font-size: .76rem;
+      color: rgba(255,255,255,.45);
+      line-height: 1.55;
+    }
+    .cafe-highlight::before {
+      content: '✦ ';
+      color: rgba(255,180,80,.5);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-stars"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✈ 2026 TRAVEL PLAN</div>
+    <h1>福岡・阿蘇・釜山<br>跨國旅遊行程</h1>
+    <p class="hero-sub">FUKUOKA · ASO · TAKACHIHO · BUSAN　｜　5/26 – 6/2</p>
+    <div class="hero-pills">
+      <span class="pill pill-jp">🇯🇵 日本 福岡</span>
+      <span class="pill pill-vol">🌋 阿蘇 × 高千穗</span>
+      <span class="pill pill-kr">🇰🇷 韓國 釜山</span>
+    </div>
+    <div class="hero-summary">
+      <div class="hs-item"><div class="hs-num">8</div><div class="hs-lbl">天</div></div>
+      <div class="hs-item"><div class="hs-num">2</div><div class="hs-lbl">國家</div></div>
+      <div class="hs-item"><div class="hs-num">5</div><div class="hs-lbl">城市</div></div>
+      <div class="hs-item"><div class="hs-num">⛴️</div><div class="hs-lbl">新山茶花號</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ 查看完整行程</div>
+</section>
+
+<div class="back-bar">
+  <a href="../../index.html" class="back-link">← 所有行程</a>
+</div>
+
+<div class="container">
+
+  <!-- ══ 日本段 ══ -->
+  <div class="section-title"><span>🇯🇵 日本 JAPAN</span></div>
+
+  <!-- D1 -->
+  <div class="day-card d1">
+    <div class="day-head">
+      <div class="day-num"><span class="n">D1</span><span class="dt">5/26</span></div>
+      <div class="day-info">
+        <h2>🛬 抵達福岡・Check-in</h2>
+        <div class="dl">2026年5月26日（二）　福岡</div>
+      </div>
+      <div class="country-flag">🇯🇵</div>
+    </div>
+    <div class="schedule">
+      <div class="si">
+        <span class="si-time">20:00</span>
+        <div>
+          <div class="si-name">福岡機場（FUK）抵達</div>
+          <div class="si-desc">辦理入境、提取行李。搭乘地鐵空港線「福岡空港 → 博多」約5分鐘（¥260）。</div>
+          <div class="si-tags"><span class="tag t-trans">地鐵 5 分鐘</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">20:40</span>
+        <div>
+          <div class="si-name">飯店 Check-in</div>
+          <div class="si-desc">建議住博多站或天神區域，放下行李稍作梳洗，再出門用餐。隔天需早起租車，選交通便利地點。</div>
+          <div class="si-tags"><span class="tag t-hotel">福岡住宿</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">21:30</span>
+        <div>
+          <div class="si-name">晚餐</div>
+          <div class="si-desc">待定</div>
+          <div class="si-tags"><span class="tag t-tbd">待定</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D2 -->
+  <div class="day-card d2">
+    <div class="day-head">
+      <div class="day-num"><span class="n">D2</span><span class="dt">5/27</span></div>
+      <div class="day-info">
+        <h2>🚗 租車・明太子麵包・阿蘇火山</h2>
+        <div class="dl">2026年5月27日（三）　福岡 → 阿蘇 → 熊本</div>
+      </div>
+      <div class="country-flag">🇯🇵</div>
+    </div>
+    <div class="schedule">
+      <div class="si">
+        <span class="si-time">09:00</span>
+        <div>
+          <div class="si-name">租車取車</div>
+          <div class="si-desc">於博多站周邊 TIMES / トヨタレンタカー 取車，趁 The Full Full Hakata 開門前辦好手續。提前網路預約。</div>
+          <div class="si-tags"><span class="tag t-trans">自駕租車</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">10:00</span>
+        <div>
+          <div class="si-name">購買明太子麵包 🍞　The Full Full Hakata</div>
+          <div class="si-desc">福岡人氣名店 <strong>The Full Full Hakata</strong>，10:00 開門。招牌明太子麵包現烤出爐，外酥內軟、明太子餡料飽滿，買好後即可出發。</div>
+          <div class="si-tags"><span class="tag t-food">明太子麵包</span><span class="tag t-shop">The Full Full Hakata</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">10:30</span>
+        <div>
+          <div class="si-name">驅車前往阿蘇</div>
+          <div class="si-desc">福岡 → 九州自動車道 → 阿蘇，車程約2.5小時。</div>
+          <div class="si-tags"><span class="tag t-trans">高速自駕</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">13:00</span>
+        <div>
+          <div class="si-name">午餐</div>
+          <div class="si-desc">待定</div>
+          <div class="si-tags"><span class="tag t-tbd">待定</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">14:00</span>
+        <div>
+          <div class="si-name">阿蘇中岳火口展望台 🌋</div>
+          <div class="si-desc">世界最大級活火山口，翠綠硫磺湖一覽無遺，步行至火口邊緣震撼感十足。<br>⚠️ 視火山活動狀況可能關閉，出發前查詢熊本縣官網公告。</div>
+          <div class="si-tags"><span class="tag t-nature">活火山口</span><span class="tag t-view">絕景</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">15:30</span>
+        <div>
+          <div class="si-name">草千里ヶ浜</div>
+          <div class="si-desc">廣闊火山草原，可近距離欣賞放牧和牛，背景是雄偉的烏帽子岳。</div>
+          <div class="si-tags"><span class="tag t-nature">草原火山</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">16:30</span>
+        <div>
+          <div class="si-name">大觀峰（阿蘇最佳全景台）</div>
+          <div class="si-desc">俯瞰阿蘇五岳與外輪山全景，被稱為「熊本的屋根」，黃昏前光線最美。</div>
+          <div class="si-tags"><span class="tag t-view">360° 展望</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">18:00</span>
+        <div>
+          <div class="si-name">驅車前往熊本 → 飯店 Check-in</div>
+          <div class="si-desc">阿蘇 → 熊本市區約50分鐘，抵達後辦理入住。</div>
+          <div class="si-tags"><span class="tag t-hotel">熊本住宿</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">19:30</span>
+        <div>
+          <div class="si-name">晚餐</div>
+          <div class="si-desc">待定</div>
+          <div class="si-tags"><span class="tag t-tbd">待定</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tips">
+      <h4>💡 TIPS</h4>
+      <ul>
+        <li>阿蘇火口如關閉可改去「阿蘇火山博物館」。</li>
+        <li>草千里停車場收費 ¥500，上午前到可避開人潮。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- D3 -->
+  <div class="day-card d3">
+    <div class="day-head">
+      <div class="day-num"><span class="n">D3</span><span class="dt">5/28</span></div>
+      <div class="day-info">
+        <h2>🌊 高千穗峽 → 返回福岡</h2>
+        <div class="dl">2026年5月28日（四）　熊本 → 高千穗 → 福岡</div>
+      </div>
+      <div class="country-flag">🇯🇵</div>
+    </div>
+    <div class="schedule">
+      <div class="si">
+        <span class="si-time">07:30</span>
+        <div>
+          <div class="si-name">早餐・退房出發</div>
+          <div class="si-desc">退房後驅車前往高千穗峽（熊本 → 高千穗約1.5小時），建議早出發搶手划船號碼牌。</div>
+          <div class="si-tags"><span class="tag t-trans">自駕</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">09:00</span>
+        <div>
+          <div class="si-name">高千穗峽・手划船 🚣</div>
+          <div class="si-desc">玄武岩柱狀節理峽谷，<strong>真名井の滝</strong>從17m傾瀉而下。租用手划船（約30分/艘，¥2,000）仰望瀑布，畢生難忘。<br>⚠️ 旺季排隊達1.5小時，建議8:30前抵達。</div>
+          <div class="si-tags"><span class="tag t-nature">峽谷瀑布</span><span class="tag t-view">必訪絕景</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">11:00</span>
+        <div>
+          <div class="si-name">高千穗神社・天岩戸神社</div>
+          <div class="si-desc">日本神話發源地，天照大神躲藏岩洞的傳說舞台。可預約導覽進入御神體岩洞前。</div>
+          <div class="si-tags"><span class="tag t-view">神話聖地</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">12:30</span>
+        <div>
+          <div class="si-name">午餐</div>
+          <div class="si-desc">待定</div>
+          <div class="si-tags"><span class="tag t-tbd">待定</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">14:00</span>
+        <div>
+          <div class="si-name">驅車返回福岡</div>
+          <div class="si-desc">高千穗 → 九州自動車道 → 福岡，約3小時，途中 SA 服務區休息。</div>
+          <div class="si-tags"><span class="tag t-trans">高速自駕</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">17:30</span>
+        <div>
+          <div class="si-name">抵達福岡・還車・Check-in</div>
+          <div class="si-desc">博多站附近還車，辦理飯店入住，整理行李準備明天搭船。</div>
+          <div class="si-tags"><span class="tag t-hotel">福岡住宿</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">19:30</span>
+        <div>
+          <div class="si-name">晚餐</div>
+          <div class="si-desc">待定</div>
+          <div class="si-tags"><span class="tag t-tbd">待定</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tips">
+      <h4>💡 TIPS</h4>
+      <ul>
+        <li>高千穗手划船旺季建議 8:30 前到場，或官網提前預約。</li>
+        <li>渡船出發前一晚確認博多港報到時間。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Ferry 說明 -->
+  <div class="ferry-banner">
+    <div class="ferry-icon">⛴️</div>
+    <div class="ferry-info">
+      <h3>博多港 → 釜山港　新山茶花號 渡輪</h3>
+      <p>
+        <strong>船班：</strong>新山茶花號（新カメリア号）　博多港出發 → 釜山港 18:30 抵達<br>
+        <strong>報到時間：</strong>出發前 90 分鐘抵達博多港辦理出境手續<br>
+        <strong>所需文件：</strong>護照（有效期6個月以上）、韓國入境表格（船上填寫）<br>
+        <strong>抵達地點：</strong>釜山國際渡輪碼頭 → 計程車至廣安里約15分鐘（₩15,000）
+      </p>
+    </div>
+  </div>
+
+  <!-- ══ 釜山位置圖 ══ -->
+  <div class="map-section">
+    <div class="map-title">🗺️ 釜山景點位置圖</div>
+    <div class="map-wrap">
+      <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="seaG" cx="50%" cy="80%" r="70%">
+            <stop offset="0%" stop-color="#0d2040"/>
+            <stop offset="100%" stop-color="#060e1c"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Sea -->
+        <rect width="800" height="400" fill="url(#seaG)"/>
+
+        <!-- Sea texture lines -->
+        <line x1="0" y1="310" x2="800" y2="310" stroke="#1a3050" stroke-width="0.6" stroke-dasharray="6,10" opacity="0.5"/>
+        <line x1="0" y1="340" x2="800" y2="340" stroke="#1a3050" stroke-width="0.6" stroke-dasharray="6,10" opacity="0.4"/>
+        <line x1="0" y1="370" x2="800" y2="370" stroke="#1a3050" stroke-width="0.6" stroke-dasharray="6,10" opacity="0.3"/>
+
+        <!-- Mainland -->
+        <polygon
+          points="0,0 800,0 800,182 630,162 585,162 540,172 498,166 458,178 415,183 378,174 340,170 300,178 262,192 228,202 188,216 148,208 112,220 78,242 48,260 18,268 0,268"
+          fill="#19304a" stroke="#2a4a68" stroke-width="1.2"/>
+
+        <!-- Yeongdo Island -->
+        <polygon
+          points="192,262 220,250 268,262 284,290 272,330 246,345 216,345 196,324 188,298"
+          fill="#19304a" stroke="#2a4a68" stroke-width="1.2"/>
+
+        <!-- Water channel label -->
+        <text x="215" y="248" fill="rgba(100,160,220,.35)" font-size="8" font-family="sans-serif" text-anchor="middle">釜山港</text>
+
+        <!-- ── Markers ── -->
+
+        <!-- 釜山港碼頭 (D4 arrival) -->
+        <circle cx="210" cy="242" r="7" fill="#00b4d8" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="210" cy="242" r="4" fill="#fff" opacity="0.9"/>
+        <rect x="140" y="252" width="76" height="16" rx="4" fill="rgba(0,0,0,.55)"/>
+        <text x="178" y="264" fill="#80e8ff" font-size="9.5" font-family="sans-serif" text-anchor="middle" font-weight="bold">⛴ 國際渡輪碼頭</text>
+
+        <!-- 白淺灘文化村 (D5, on Yeongdo) -->
+        <circle cx="244" cy="296" r="7" fill="#4488ff" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="244" cy="296" r="4" fill="#fff" opacity="0.9"/>
+        <rect x="254" y="288" width="80" height="16" rx="4" fill="rgba(0,0,0,.55)"/>
+        <text x="294" y="300" fill="#80bbff" font-size="9.5" font-family="sans-serif" text-anchor="middle" font-weight="bold">🏘 白淺灘文化村</text>
+
+        <!-- 甘川洞文化村 (D6) -->
+        <circle cx="138" cy="195" r="7" fill="#8855ff" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="138" cy="195" r="4" fill="#fff" opacity="0.9"/>
+        <rect x="63" y="185" width="70" height="16" rx="4" fill="rgba(0,0,0,.55)"/>
+        <text x="98" y="197" fill="#cc99ff" font-size="9.5" font-family="sans-serif" text-anchor="middle" font-weight="bold">🌈 甘川洞文化村</text>
+
+        <!-- 扎嘎其/南浦洞 (D6) -->
+        <circle cx="195" cy="222" r="7" fill="#8855ff" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="195" cy="222" r="4" fill="#fff" opacity="0.9"/>
+        <rect x="204" y="214" width="72" height="16" rx="4" fill="rgba(0,0,0,.55)"/>
+        <text x="240" y="226" fill="#cc99ff" font-size="9.5" font-family="sans-serif" text-anchor="middle" font-weight="bold">🐟 扎嘎其・南浦洞</text>
+
+        <!-- 龍頭山公園 (D6) -->
+        <circle cx="202" cy="204" r="6" fill="#8855ff" opacity="0.8"/>
+        <circle cx="202" cy="204" r="3.5" fill="#fff" opacity="0.8"/>
+        <rect x="210" y="196" width="62" height="14" rx="4" fill="rgba(0,0,0,.5)"/>
+        <text x="241" y="207" fill="#cc99ff" font-size="8.5" font-family="sans-serif" text-anchor="middle">🗼 龍頭山公園</text>
+
+        <!-- 西面 (D7, inland) -->
+        <circle cx="338" cy="162" r="7" fill="#5599dd" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="338" cy="162" r="4" fill="#fff" opacity="0.9"/>
+        <rect x="346" y="154" width="44" height="16" rx="4" fill="rgba(0,0,0,.55)"/>
+        <text x="368" y="166" fill="#99ccff" font-size="9.5" font-family="sans-serif" text-anchor="middle" font-weight="bold">🛍 西面</text>
+
+        <!-- 廣安里 (Hotel ★) -->
+        <circle cx="448" cy="222" r="10" fill="#ff8c00" opacity="1" filter="url(#glow)"/>
+        <text x="448" y="226" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="bold">★</text>
+        <rect x="458" y="213" width="82" height="18" rx="5" fill="rgba(255,140,0,.25)" stroke="rgba(255,140,0,.5)" stroke-width="1"/>
+        <text x="499" y="226" fill="#ffcc66" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">廣安里（住宿）</text>
+        <!-- Gwangalli bridge line -->
+        <line x1="420" y1="240" x2="490" y2="240" stroke="#ff8c00" stroke-width="2" stroke-dasharray="4,3" opacity="0.5"/>
+        <text x="455" y="252" fill="rgba(255,180,0,.5)" font-size="7.5" font-family="sans-serif" text-anchor="middle">廣安大橋</text>
+
+        <!-- Spa Land 汗蒸幕 (D5) -->
+        <circle cx="508" cy="183" r="7" fill="#ff55aa" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="508" cy="183" r="4" fill="#fff" opacity="0.9"/>
+        <rect x="516" y="175" width="62" height="16" rx="4" fill="rgba(0,0,0,.55)"/>
+        <text x="547" y="187" fill="#ff99cc" font-size="9.5" font-family="sans-serif" text-anchor="middle" font-weight="bold">♨ 汗蒸幕</text>
+
+        <!-- 海雲台 (D5) -->
+        <circle cx="566" cy="192" r="7" fill="#4488ff" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="566" cy="192" r="4" fill="#fff" opacity="0.9"/>
+        <rect x="574" y="184" width="52" height="16" rx="4" fill="rgba(0,0,0,.55)"/>
+        <text x="600" y="196" fill="#80bbff" font-size="9.5" font-family="sans-serif" text-anchor="middle" font-weight="bold">🏖 海雲台</text>
+
+        <!-- Sky Capsule (D7) -->
+        <circle cx="615" cy="162" r="7" fill="#5599dd" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="615" cy="162" r="4" fill="#fff" opacity="0.9"/>
+        <rect x="620" y="144" width="96" height="28" rx="4" fill="rgba(0,0,0,.6)"/>
+        <text x="668" y="156" fill="#99ccff" font-size="9.5" font-family="sans-serif" text-anchor="middle" font-weight="bold">🚡 Sky Capsule</text>
+        <text x="668" y="168" fill="rgba(255,180,80,.8)" font-size="8" font-family="sans-serif" text-anchor="middle">🏀 灌籃高手 青沙浦→尾浦</text>
+
+        <!-- 松島 (D7) -->
+        <circle cx="72" cy="256" r="7" fill="#5599dd" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="72" cy="256" r="4" fill="#fff" opacity="0.9"/>
+        <rect x="3" y="248" width="62" height="16" rx="4" fill="rgba(0,0,0,.55)"/>
+        <text x="34" y="260" fill="#99ccff" font-size="9.5" font-family="sans-serif" text-anchor="middle" font-weight="bold">🌊 松島纜車</text>
+
+        <!-- 금해공항 label -->
+        <text x="340" y="125" fill="rgba(255,255,255,.18)" font-size="9" font-family="sans-serif" text-anchor="middle">← 金海國際機場（PUS）</text>
+
+        <!-- 東海 label -->
+        <text x="700" y="340" fill="rgba(80,140,200,.25)" font-size="11" font-family="sans-serif" text-anchor="middle" font-style="italic">東　海</text>
+
+        <!-- Compass -->
+        <text x="762" y="28" fill="rgba(255,255,255,.25)" font-size="12" font-family="sans-serif" text-anchor="middle">N</text>
+        <line x1="762" y1="32" x2="762" y2="48" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+        <polygon points="762,32 758,48 762,44 766,48" fill="rgba(255,255,255,.25)"/>
+      </svg>
+    </div>
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#00b4d8"></div>D4 抵達・碼頭</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4488ff"></div>D5 海雲台・白淺灘</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ff55aa"></div>D5 汗蒸幕</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#8855ff"></div>D6 甘川洞・南浦洞</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#5599dd"></div>D7 Sky Capsule・西面・松島</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ff8c00"></div>★ 廣安里 住宿</div>
+    </div>
+  </div>
+
+  <!-- ══ 韓國段 ══ -->
+  <div class="section-title"><span>🇰🇷 韓國 KOREA</span></div>
+
+  <!-- D4 -->
+  <div class="day-card d4">
+    <div class="day-head">
+      <div class="day-num"><span class="n">D4</span><span class="dt">5/29</span></div>
+      <div class="day-info">
+        <h2>⛴️ 新山茶花號 抵達釜山・廣安大橋夜景</h2>
+        <div class="dl">2026年5月29日（五）　福岡 → 釜山（抵達18:30）</div>
+      </div>
+      <div class="country-flag">🇰🇷</div>
+    </div>
+    <div class="schedule">
+      <div class="si">
+        <span class="si-time">上午</span>
+        <div>
+          <div class="si-name">福岡自由活動</div>
+          <div class="si-desc">天神地下街購物或キャナルシティ逛街，輕鬆消磨出發前時光。</div>
+          <div class="si-tags"><span class="tag t-shop">購物</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">報到</span>
+        <div>
+          <div class="si-name">博多港報到・出境</div>
+          <div class="si-desc">攜帶護照前往博多港，出發前 90 分鐘辦理船票確認及出境手續。</div>
+          <div class="si-tags"><span class="tag t-trans">出境</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">出發</span>
+        <div>
+          <div class="si-name">新山茶花號 出發 🚢</div>
+          <div class="si-desc">博多港啟航，船上可至甲板欣賞海景，船內設有免稅賣場及餐廳。</div>
+          <div class="si-tags"><span class="tag t-trans">新山茶花號</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">18:30</span>
+        <div>
+          <div class="si-name">釜山港・入境韓國</div>
+          <div class="si-desc">辦理入境手續，便利商店購買 T-money 交通卡，搭計程車至廣安里約15分鐘（₩15,000）。</div>
+          <div class="si-tags"><span class="tag t-trans">入境</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">19:30</span>
+        <div>
+          <div class="si-name">Check-in 廣安里飯店</div>
+          <div class="si-desc">廣安里沿岸有多間海景飯店，入住後從房間可直視廣安大橋，挑選面海房型。</div>
+          <div class="si-tags"><span class="tag t-hotel">廣安里住宿</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">20:30</span>
+        <div>
+          <div class="si-name">廣安里晚餐</div>
+          <div class="si-desc">廣安里海岸海鮮居酒屋，推薦活生章魚（산낙지）或辣海鮮湯（해물탕），搭配소주。</div>
+          <div class="si-tags"><span class="tag t-food">海鮮料理</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">22:00</span>
+        <div>
+          <div class="si-name">廣安大橋燈光秀 初覽 ✨</div>
+          <div class="si-desc">廣安大橋 7,420 顆 LED 點亮海面，最佳觀賞點：廣安里沙灘正前方 或 민락수변공원。<br>燈光秀時間約 20:00–24:00。</div>
+          <div class="si-tags"><span class="tag t-show">燈光秀</span><span class="tag t-night">夜景</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D5 -->
+  <div class="day-card d5">
+    <div class="day-head">
+      <div class="day-num"><span class="n">D5</span><span class="dt">5/30</span></div>
+      <div class="day-info">
+        <h2>🏖️ 海雲台・白淺灘文化村・週六特別燈光秀・♨ 汗蒸幕</h2>
+        <div class="dl">2026年5月30日（六）　釜山精華 × 週六夜</div>
+      </div>
+      <div class="country-flag">🇰🇷</div>
+    </div>
+    <div class="schedule">
+      <div class="si">
+        <span class="si-time">09:30</span>
+        <div>
+          <div class="si-name">海雲台海水浴場散步</div>
+          <div class="si-desc">韓國最知名白沙海灘，延綿1.5公里，旁邊 The Bay 101 碼頭咖啡廳享受早晨海景。</div>
+          <div class="si-tags"><span class="tag t-view">海灘</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">11:00</span>
+        <div>
+          <div class="si-name">早午餐・海雲台</div>
+          <div class="si-desc">海雲台市場附近餐廳，推薦活螃蟹定食或海鮮煎餅（해물파전）。</div>
+          <div class="si-tags"><span class="tag t-food">海鮮</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">13:00</span>
+        <div>
+          <div class="si-name">白淺灘文化村（흰여울문화마을）🏘️</div>
+          <div class="si-desc">影島山腰上的彩色小漁村，絕壁俯瞰釜山港，村內電影拍攝景點・藝術裝置・咖啡廳林立，巷弄間發現壁畫與海景的美麗碰撞。</div>
+          <div class="si-tags"><span class="tag t-view">文化村</span><span class="tag t-view">影島海景</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">15:00</span>
+        <div>
+          <div class="si-name">絕影海岸散步路</div>
+          <div class="si-desc">白淺灘附近，沿懸崖邊設置的步道，海浪拍打礁岩，夕陽前景色絕美。</div>
+          <div class="si-tags"><span class="tag t-nature">海岸步道</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">17:00</span>
+        <div>
+          <div class="si-name">回廣安里・休息換裝</div>
+          <div class="si-desc">稍作休息，準備迎接週六最精彩的夜晚。</div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">18:30</span>
+        <div>
+          <div class="si-name">廣安里晚餐</div>
+          <div class="si-desc">廣安里沿岸韓式烤肉店，五花肉（삼겹살）搭配各式小菜，週六氛圍最熱鬧。</div>
+          <div class="si-tags"><span class="tag t-food">韓式烤肉</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">20:30</span>
+        <div>
+          <div class="si-name">🎇 週六特別廣安大橋燈光秀</div>
+          <div class="si-desc"><strong>週六有特別演出</strong>，圖案切換更豐富、色彩更絢麗，是整趟旅程夜景最高潮！<br>推薦在民樂水邊公園架腳架長曝光，或直接坐沙灘感受震撼倒影。</div>
+          <div class="si-tags"><span class="tag t-show">週六特別秀</span><span class="tag t-night">夜景高潮</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">22:30</span>
+        <div>
+          <div class="si-name">♨ 汗蒸幕（찜질방）</div>
+          <div class="si-desc">推薦 <strong>Spa Land（신세계 센텀시티）</strong>——釜山最大規模汗蒸幕，13種主題溫泉浴池＋黃土汗蒸房，24小時營業。<br>舒緩一日步行疲勞，體驗道地韓國文化，可持續泡到深夜。票價約 ₩18,000。</div>
+          <div class="si-tags"><span class="tag t-spa">♨ 汗蒸幕</span><span class="tag t-night">深夜</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tips">
+      <h4>💡 TIPS</h4>
+      <ul>
+        <li>白淺灘文化村停車不便，建議搭地鐵至「남포역」再轉計程車（約 ₩8,000）。</li>
+        <li>週六廣安大橋燈光秀是此行夜景高潮，請務必把握。</li>
+        <li>Spa Land 需攜帶身分證/護照，提供韓服（찜질방복）及毛巾。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- D6 -->
+  <div class="day-card d6">
+    <div class="day-head">
+      <div class="day-num"><span class="n">D6</span><span class="dt">5/31</span></div>
+      <div class="day-info">
+        <h2>🎨 甘川洞・南浦洞・龍頭山・廣安大橋</h2>
+        <div class="dl">2026年5月31日（日）　釜山西區探索</div>
+      </div>
+      <div class="country-flag">🇰🇷</div>
+    </div>
+    <div class="schedule">
+      <div class="si">
+        <span class="si-time">09:30</span>
+        <div>
+          <div class="si-name">甘川洞文化村（감천문화마을）🌈</div>
+          <div class="si-desc">「韓國馬丘比丘」！彩色階梯小屋依山而建，街頭藝術裝置遍布巷弄，高處俯瞰整個釜山港。入場費 ₩2,000，建議 9:30 前到，避開遊覽車人潮。</div>
+          <div class="si-tags"><span class="tag t-view">打卡聖地</span><span class="tag t-view">藝術村</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">11:30</span>
+        <div>
+          <div class="si-name">扎嘎其水產市場（자갈치시장）</div>
+          <div class="si-desc">釜山最大海鮮市場，現買現烤活龍蝦、海螺、貝類，2樓加工烹飪區超值道地。</div>
+          <div class="si-tags"><span class="tag t-food">海鮮市場</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">13:00</span>
+        <div>
+          <div class="si-name">午餐：BIFF廣場 豬肉湯飯（돼지국밥）</div>
+          <div class="si-desc">釜山最具代表性主食，配泡菜小菜，約 ₩9,000，平價飽足。</div>
+          <div class="si-tags"><span class="tag t-food">돼지국밥</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">14:30</span>
+        <div>
+          <div class="si-name">龍頭山公園・釜山塔</div>
+          <div class="si-desc">120m 高釜山塔可 360° 俯瞰市區與釜山港，黃昏時段光線最美。</div>
+          <div class="si-tags"><span class="tag t-view">展望台</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">16:00</span>
+        <div>
+          <div class="si-name">影島大橋・南浦洞地下商街</div>
+          <div class="si-desc">影島大橋每日 14:00 有開合橋演出。南浦洞地下商街購買韓妝、零食伴手禮。</div>
+          <div class="si-tags"><span class="tag t-view">歷史地標</span><span class="tag t-shop">購物</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">18:30</span>
+        <div>
+          <div class="si-name">廣安里晚餐</div>
+          <div class="si-desc">廣安里海鮮餐廳，或嘗試韓式炸雞配生啤酒（치맥文化）。</div>
+          <div class="si-tags"><span class="tag t-food">치맥</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">20:30</span>
+        <div>
+          <div class="si-name">廣安大橋燈光秀</div>
+          <div class="si-desc">週日夜間燈光秀，沙灘上享受輕鬆愜意的夜晚，明天還有 Sky Capsule 等著。</div>
+          <div class="si-tags"><span class="tag t-show">燈光秀</span><span class="tag t-night">夜景</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D7 -->
+  <div class="day-card d7">
+    <div class="day-head">
+      <div class="day-num"><span class="n">D7</span><span class="dt">6/1</span></div>
+      <div class="day-info">
+        <h2>🏀 灌籃高手聖地・🚡 Sky Capsule・松島纜車・告別夜</h2>
+        <div class="dl">2026年6月1日（一）　釜山最後精華</div>
+      </div>
+      <div class="country-flag">🇰🇷</div>
+    </div>
+    <div class="schedule">
+      <div class="si">
+        <span class="si-time">09:00</span>
+        <div>
+          <div class="si-name">抵達 青沙浦站（청사포역）</div>
+          <div class="si-desc">搭地鐵2號線至「해운대역」後轉計程車或步行前往青沙浦，即為 Sky Capsule 的出發站。</div>
+          <div class="si-tags"><span class="tag t-trans">地鐵 + 計程車</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">09:15</span>
+        <div>
+          <div class="si-name">🏀 灌籃高手打卡拍照</div>
+          <div class="si-desc">
+            青沙浦站旁保留了昔日東海南部線鐵路平交道，與動畫《灌籃高手》片頭曲場景高度吻合——<br>
+            鐵軌延伸向大海、遠處青山，重現湘北五人沿海岸線奔跑的經典畫面。<br>
+            <strong>拍攝要點：</strong>站在平交道中央，鏡頭朝海側（東南方）構圖，背後山丘與天空形成完美背景。<br>
+            建議早晨人少時拍攝，光線柔和且無遊客入鏡。
+          </div>
+          <div class="si-tags"><span class="tag t-view">🏀 灌籃高手聖地</span><span class="tag t-view">打卡拍照</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">09:45</span>
+        <div>
+          <div class="si-name">Sky Capsule 膠囊列車　青沙浦 → 尾浦 🚡</div>
+          <div class="si-desc">
+            於青沙浦站上車，沿海岸線向西行駛至尾浦（미포），透明膠囊俯瞰東海、礁岩與白浪全程入眼。<br>
+            <strong>⚠️ 須提前 2–3 週於「해운대블루라인파크」官網預訂早班，票價約 ₩35,000/2人。</strong>
+          </div>
+          <div class="si-tags"><span class="tag t-cable">🚡 青沙浦 → 尾浦</span><span class="tag t-view">海景絕景</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">10:30</span>
+        <div>
+          <div class="si-name">尾浦（미포）周邊散步・咖啡廳</div>
+          <div class="si-desc">尾浦是海雲台東側的小漁港，近年有不少特色咖啡廳，可在海景座位點杯咖啡稍作休息。</div>
+          <div class="si-tags"><span class="tag t-food">咖啡廳</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">11:30</span>
+        <div>
+          <div class="si-name">午餐・西面</div>
+          <div class="si-desc">搭地鐵至西面，品嚐釜山式冷麵（부산냉면）或韓定食，再逛樂天百貨地下食品街。</div>
+          <div class="si-tags"><span class="tag t-food">冷麵</span><span class="tag t-shop">百貨</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">13:30</span>
+        <div>
+          <div class="si-name">松島海水浴場・雲上天空步道</div>
+          <div class="si-desc">海上空橋步道延伸至海中間，免費入場，俯瞰松島全景。</div>
+          <div class="si-tags"><span class="tag t-view">天空步道</span><span class="tag t-nature">海灘</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">14:30</span>
+        <div>
+          <div class="si-name">松島 海上纜車</div>
+          <div class="si-desc">全亞洲最長海上纜車，透明地板車廂橫越松島海上 1.62km，俯視碧藍海水。票價約 ₩15,000/人。</div>
+          <div class="si-tags"><span class="tag t-cable">海上纜車</span><span class="tag t-view">海景</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">16:00</span>
+        <div>
+          <div class="si-name">西面・釜田市場 最後購物</div>
+          <div class="si-desc">西面地下商街購買韓妝、衣物、零食，最後補貨機會。</div>
+          <div class="si-tags"><span class="tag t-shop">最後購物</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">18:00</span>
+        <div>
+          <div class="si-name">廣安里夕陽</div>
+          <div class="si-desc">坐在廣安里沙灘，欣賞最後一個釜山夕陽，為這段旅程留下美麗倒影。</div>
+          <div class="si-tags"><span class="tag t-view">夕陽</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">19:30</span>
+        <div>
+          <div class="si-name">告別晚餐　The Bay 101（海雲台）</div>
+          <div class="si-desc">海雲台最高檔夜景碼頭餐廳，俯瞰夜灣、遊艇燈光，點一杯韓國精釀為旅程畫下完美句點。</div>
+          <div class="si-tags"><span class="tag t-food">告別晚餐</span><span class="tag t-night">夜景</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">21:30</span>
+        <div>
+          <div class="si-name">Marine City 高樓夜景</div>
+          <div class="si-desc">海雲台新都心大廈群璀璨燈光映入海面，「韓國香港」，為釜山留下最後的璀璨夜色。</div>
+          <div class="si-tags"><span class="tag t-night">城市夜景</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="tips">
+      <h4>💡 TIPS</h4>
+      <ul>
+        <li>Sky Capsule 提前 2–3 週於「해운대블루라인파크」官網預訂，指定<strong>青沙浦（청사포）出發</strong>往尾浦方向早班，人少且光線柔和。</li>
+        <li>灌籃高手平交道建議 9:00 前抵達拍攝，人潮較少；拍攝時注意周圍安全，勿長時間佔用鐵道。</li>
+        <li>明天 10:00 出發，今晚整理行李、確認機票、Gimhae 機場交通。</li>
+        <li>金海機場距廣安里約 40 分鐘（計程車 ₩25,000 或地鐵 2 號線）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- D8 -->
+  <div class="day-card d8">
+    <div class="day-head">
+      <div class="day-num"><span class="n">D8</span><span class="dt">6/2</span></div>
+      <div class="day-info">
+        <h2>✈️ 金海機場 → 台北　回程</h2>
+        <div class="dl">2026年6月2日（二）</div>
+      </div>
+      <div class="country-flag">🇹🇼</div>
+    </div>
+    <div class="schedule">
+      <div class="si">
+        <span class="si-time">07:00</span>
+        <div>
+          <div class="si-name">早起・退房</div>
+          <div class="si-desc">飯店早餐後辦理退房，確認護照、機票、行李托運。</div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">08:00</span>
+        <div>
+          <div class="si-name">前往金海國際機場（PUS）</div>
+          <div class="si-desc">廣安里 → 金海機場：計程車約40分鐘（₩25,000）或地鐵2號線→「사상역」轉輕軌（約50分）。</div>
+          <div class="si-tags"><span class="tag t-trans">計程車 / 地鐵</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">08:30</span>
+        <div>
+          <div class="si-name">辦理登機・出境</div>
+          <div class="si-desc">國際線建議提早2小時辦理，出境後免稅店購買最後韓國伴手禮。</div>
+          <div class="si-tags"><span class="tag t-shop">免稅購物</span></div>
+        </div>
+      </div>
+      <div class="si">
+        <span class="si-time">10:00</span>
+        <div>
+          <div class="si-name">釜山 PUS 起飛 → 台北 ✈️</div>
+          <div class="si-desc">帶著滿載的回憶，航程約2.5小時，圓滿結束這趟日韓跨國之旅！</div>
+          <div class="si-tags"><span class="tag t-trans">回台</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ COFFEE LIST ══ -->
+<div class="container" style="padding-top:0;">
+  <div class="cafe-section">
+    <div class="cafe-section-title">☕ 釜山待選咖啡廳清單</div>
+    <div class="cafe-grid">
+
+      <div class="cafe-card">
+        <div class="cafe-name">THRILL ON THE MUG</div>
+        <div class="cafe-highlight">戶外玻璃露台直望太宗台海景與日落美景</div>
+      </div>
+
+      <div class="cafe-card">
+        <div class="cafe-name">Cafe Coralani <span class="cafe-name-kr">카페 코랄라니</span></div>
+        <div class="cafe-highlight">四層樓觀景露台一覽無遺的釜山東海岸</div>
+      </div>
+
+      <div class="cafe-card">
+        <div class="cafe-name">P.ARK <span class="cafe-name-kr">피아크</span></div>
+        <div class="cafe-highlight">大片玻璃帷幕座位直面港灣海景與夕陽</div>
+      </div>
+
+      <div class="cafe-card">
+        <div class="cafe-name">CUP&amp;CUP <span class="cafe-name-kr">컵앤컵</span></div>
+        <div class="cafe-highlight">靠窗座位直面廣安大橋，氣氛療癒不限時</div>
+      </div>
+
+      <div class="cafe-card">
+        <div class="cafe-name">Waveon Coffee <span class="cafe-name-kr">웨이브온 커피</span></div>
+        <div class="cafe-highlight">三層樓極簡玻璃建築，擁有躺式露台與無敵東海海景</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:2rem 1rem 3rem;font-size:.75rem;color:rgba(255,255,255,.2);letter-spacing:.08em;">
+  🇯🇵 福岡 · 阿蘇 · 高千穗　⛴ 新山茶花號　🇰🇷 釜山　|　2026年5月26日 – 6月2日
+</footer>
+</body>
+</html>

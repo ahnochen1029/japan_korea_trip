@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的旅遊行程</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      padding: 5rem 1.5rem 3.5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 25% 40%, rgba(108,99,255,.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 60%, rgba(255,140,100,.14) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; }
+
+    .hero-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: .5rem;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,.45);
+      font-size: .9rem;
+      letter-spacing: .06em;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Stats ── */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .stat-item { text-align: center; }
+    .stat-num  { font-size: 1.6rem; font-weight: 800; color: #f0f0ff; }
+    .stat-lbl  { font-size: .72rem; color: rgba(255,255,255,.4); letter-spacing: .06em; }
+
+    /* ── Section ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-header h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.6);
+      letter-spacing: .08em;
+    }
+
+    /* ── Trip card cover ── */
+    .trip-cover {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Add button ── */
+    .add-card {
+      border: 2px dashed rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 1.8rem;
+      text-align: center;
+      color: rgba(255,255,255,.3);
+      font-size: .85rem;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+
+    .add-card:hover {
+      border-color: rgba(201,184,255,.4);
+      color: #c9b8ff;
+    }
+
+    .add-card-icon { font-size: 1.8rem; margin-bottom: .4rem; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-content">
+    <span class="hero-icon">✈️</span>
+    <h1 class="gradient-text">我的旅遊行程</h1>
+    <p>MY TRAVEL PLANS</p>
+
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-num" id="stat-total">–</div>
+        <div class="stat-lbl">行程數量</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-countries">–</div>
+        <div class="stat-lbl">造訪國家</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-days">–</div>
+        <div class="stat-lbl">累積旅遊天數</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 即將出發 -->
+  <div class="section-header">
+    <h2>🗓 即將出發</h2>
+  </div>
+  <div id="trips-upcoming"></div>
+
+  <!-- 已完成 -->
+  <div class="section-header" style="margin-top:2.5rem;">
+    <h2>✅ 已完成行程</h2>
+  </div>
+  <div id="trips-done"></div>
+
+  <!-- 待辦事項 -->
+  <div style="margin-top:2.5rem;">
+    <a href="todo.html" style="display:flex;align-items:center;gap:1rem;background:rgba(201,184,255,.06);border:1px solid rgba(201,184,255,.15);border-radius:16px;padding:1.2rem 1.5rem;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(201,184,255,.1)'" onmouseout="this.style.background='rgba(201,184,255,.06)'">
+      <span style="font-size:1.6rem;">✅</span>
+      <div>
+        <div style="font-size:.95rem;font-weight:700;color:#c9b8ff;">出發前待辦事項</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:.15rem;">eSIM、預訂、票券採購清單</div>
+      </div>
+      <span style="margin-left:auto;font-size:1.2rem;color:rgba(255,255,255,.25);">›</span>
+    </a>
+  </div>
+
+  <!-- 新增行程 -->
+  <div style="margin-top:1rem;">
+    <div class="add-card" onclick="alert('請複製 trips/_template/index.html 並於 data/trips.json 新增條目')">
+      <div class="add-card-icon">＋</div>
+      新增旅遊行程
+    </div>
+  </div>
+
+</div>
+
+<script src="assets/js/app.js"></script>
+<script>
+  const TRIPS = [
+    {
+      id: "fukuoka-busan-2025",
+      title: "福岡・阿蘇・釜山",
+      subtitle: "日本 × 韓國跨國之旅",
+      dateRange: "2026/05/26 – 06/02",
+      duration: 8,
+      countries: ["日本", "韓國"],
+      cities: ["福岡", "阿蘇", "高千穗", "熊本", "釜山"],
+      cover: "🌋",
+      tags: ["火山", "峽谷", "夜景", "渡輪", "膠囊列車"],
+      status: "upcoming",
+      path: "trips/fukuoka-busan-2025/index.html"
+    }
+  ];
+
+  (() => {
+    // Stats
+    const countries = new Set(TRIPS.flatMap(t => t.countries));
+    const totalDays  = TRIPS.reduce((s, t) => s + t.duration, 0);
+    document.getElementById('stat-total').textContent     = TRIPS.length;
+    document.getElementById('stat-countries').textContent = countries.size;
+    document.getElementById('stat-days').textContent      = totalDays;
+
+    // Render by status
+    const upcoming = TRIPS.filter(t => t.status === 'upcoming' || t.status === 'ongoing');
+    const done     = TRIPS.filter(t => t.status === 'done');
+
+    document.getElementById('trips-upcoming').innerHTML =
+      upcoming.length ? upcoming.map(renderTripCard).join('') :
+      '<p style="color:rgba(255,255,255,.3);font-size:.85rem;">尚無即將出發的行程</p>';
+
+    document.getElementById('trips-done').innerHTML =
+      done.length ? done.map(renderTripCard).join('') :
+      '<p style="color:rgba(255,255,255,.3);font-size:.85rem;">尚無已完成的行程</p>';
+  })();
+</script>
+</body>
+</html>
